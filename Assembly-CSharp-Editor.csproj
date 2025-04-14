@@ -76,8 +76,8 @@
     <Compile Include="Assets\UniGLTF\UniJSON\Editor\Tests\MsgPack\FloatTest.cs" />
     <Compile Include="Assets\UniGLTF\UniJSON\Editor\Tests\MsgPack\RawTest.cs" />
     <Compile Include="Assets\UniGLTF\UniJSON\Editor\Tests\MsgPack\BooleanTest.cs" />
-    <Compile Include="Assets\UniGLTF\Core\Scripts\Editor\ImporterMenu.cs" />
     <Compile Include="Assets\UniGLTF\UniJSON\Editor\Tests\MsgPack\MapTest.cs" />
+    <Compile Include="Assets\UniGLTF\Core\Scripts\Editor\ImporterMenu.cs" />
     <Compile Include="Assets\UniGLTF\Core\Scripts\Editor\gltfAssetPostprocessor.cs" />
     <Compile Include="Assets\UniGLTF\UniJSON\Editor\Tests\JsonParserTest.cs" />
     <Compile Include="Assets\UniGLTF\UniHumanoid\Scripts\Editor\bvhAssetPostprocessor.cs" />
