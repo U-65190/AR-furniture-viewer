@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 3840, y: 2160}
+  m_TargetSize: {x: 572, y: 334}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -386,16 +386,16 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -1920
-    m_HBaseRangeMax: 1920
-    m_VBaseRangeMin: -1080
-    m_VBaseRangeMax: 1080
+    m_HBaseRangeMin: -286
+    m_HBaseRangeMax: 286
+    m_VBaseRangeMin: -167
+    m_VBaseRangeMax: 167
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
+    m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
@@ -409,20 +409,20 @@ MonoBehaviour:
       y: 21
       width: 572
       height: 334
-    m_Scale: {x: 0.14895834, y: 0.14895834}
-    m_Translation: {x: 285.99997, y: 166.99998}
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 286, y: 167}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1919.9998
-      y: -1121.1188
-      width: 3839.9998
-      height: 2242.2375
+      x: -286
+      y: -167
+      width: 572
+      height: 334
     m_MinimalGUI: 1
-  m_defaultScale: 0.14895834
+  m_defaultScale: 1
   m_LastWindowPixelSize: {x: 572, y: 355}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -961,13 +961,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.022890296, y: -0.6939185, z: 0.022080274, w: -0.7193538}
+    m_Target: {x: 0.0010256793, y: -0.99889004, z: 0.03928604, w: 0.026083525}
     speed: 2
-    m_Value: {x: 0.022890296, y: 0.6939185, z: -0.022080274, w: 0.7193538}
+    m_Value: {x: -0.0010256793, y: 0.9988901, z: -0.03928604, w: -0.026083525}
   m_Size:
-    m_Target: 34.915554
+    m_Target: 56.662815
     speed: 2
-    m_Value: 34.915554
+    m_Value: 56.662815
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1141,7 +1141,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1149,15 +1149,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Unity Projects\AR furniture placer
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 90940000
-    m_LastClickedID: 38032
+    m_SelectedIDs: 92940000
+    m_LastClickedID: 38034
     m_ExpandedIDs: 000000008894000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
