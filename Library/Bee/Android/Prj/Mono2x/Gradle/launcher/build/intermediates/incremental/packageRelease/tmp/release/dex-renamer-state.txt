@@ -1,0 +1,4 @@
+#Wed Apr 16 01:07:45 IST 2025
+base.0=D\:\\Unity Projects\\AR furniture placer\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

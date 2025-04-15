@@ -1,38 +1,47 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
+using UnityEngine.InputSystem; // For new input system
+using UnityEngine.InputSystem.EnhancedTouch;
 
-public class ARTapToPlace : MonoBehaviour
+public class SimulatedTapToPlace : MonoBehaviour
 {
     public GameObject[] furniturePrefabs;
-    public ARRaycastManager raycastManager;
-
     private GameObject spawnedObject;
     private int currentIndex = 0;
-    private List<ARRaycastHit> hits = new List<ARRaycastHit>();
+
+    private void OnEnable()
+    {
+        EnhancedTouchSupport.Enable();  // For simulating touch with mouse
+    }
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
-            Touch touch = Input.GetTouch(0);
+            if (!IsPointerOverUI())
+                PlaceFurniture();
+        }
 
-            if (raycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon))
-            {
-                Pose hitPose = hits[0].pose;
+#if UNITY_EDITOR
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            if (!IsPointerOverUI())
+                PlaceFurniture();
+        }
+#endif
+    }
 
-                if (spawnedObject == null)
-                {
-                    Vector3 offsetPosition = hitPose.position + hitPose.forward * 5f; // offset forward
-                    spawnedObject = Instantiate(furniturePrefabs[currentIndex], offsetPosition, hitPose.rotation);
-                }
-                else
-                {
-                    Vector3 offsetPosition = hitPose.position + hitPose.forward * 5f;
-                    spawnedObject.transform.position = offsetPosition;
-                }
-            }
+    void PlaceFurniture()
+    {
+        Vector3 spawnPosition = Camera.main.transform.position + new Vector3(0f, -5f, 10f);
+        Quaternion spawnRotation = Quaternion.LookRotation(Camera.main.transform.forward);
+
+        if (spawnedObject == null)
+        {
+            spawnedObject = Instantiate(furniturePrefabs[currentIndex], spawnPosition, spawnRotation);
+        }
+        else
+        {
+            spawnedObject.transform.position = spawnPosition;
         }
     }
 
@@ -44,7 +53,8 @@ public class ARTapToPlace : MonoBehaviour
         }
 
         currentIndex = (currentIndex + 1) % furniturePrefabs.Length;
-        spawnedObject = Instantiate(furniturePrefabs[currentIndex], spawnedObject?.transform.position ?? Vector3.zero, Quaternion.identity);
+        Vector3 spawnPos = Camera.main.transform.position + new Vector3(0f, -5f, 10f);
+        spawnedObject = Instantiate(furniturePrefabs[currentIndex], spawnPos, Quaternion.identity);
     }
 
     public void ResetPlacement()
@@ -59,24 +69,24 @@ public class ARTapToPlace : MonoBehaviour
     public void IncreaseSize()
     {
         if (spawnedObject != null)
-    {
-        spawnedObject.transform.localScale *= 1.2f; // Increase by 20%
-    }
+        {
+            spawnedObject.transform.localScale *= 1.2f;
+        }
     }
 
     public void DecreaseSize()
     {
         if (spawnedObject != null)
-    {
-        spawnedObject.transform.localScale *= 0.8f; // Decrease by 20%
-    }
+        {
+            spawnedObject.transform.localScale *= 0.8f;
+        }
     }
 
     public void RotateLeft()
     {
         if (spawnedObject != null)
         {
-            spawnedObject.transform.Rotate(0f, -15f, 0f); // 15 degrees left
+            spawnedObject.transform.Rotate(0f, -15f, 0f);
         }
     }
 
@@ -84,8 +94,63 @@ public class ARTapToPlace : MonoBehaviour
     {
         if (spawnedObject != null)
         {
-            spawnedObject.transform.Rotate(0f, 15f, 0f); // 15 degrees right
+            spawnedObject.transform.Rotate(0f, 15f, 0f);
         }
     }
-}
 
+    public void MoveUp()
+    {
+        if (spawnedObject != null)
+        {
+            spawnedObject.transform.position += Vector3.up * 0.1f;
+        }
+    }
+
+    public void MoveDown()
+    {
+        if (spawnedObject != null)
+        {
+            spawnedObject.transform.position -= Vector3.up * 0.1f;
+        }
+    }
+
+    // New functions for move left, right, rotate up and rotate down
+
+    public void MoveLeft()
+    {
+        if (spawnedObject != null)
+        {
+            spawnedObject.transform.position -= Vector3.right * 0.1f; // Move left by 0.1f units
+        }
+    }
+
+    public void MoveRight()
+    {
+        if (spawnedObject != null)
+        {
+            spawnedObject.transform.position += Vector3.right * 0.1f; // Move right by 0.1f units
+        }
+    }
+
+    public void RotateUp()
+    {
+        if (spawnedObject != null)
+        {
+            spawnedObject.transform.Rotate(-15f, 0f, 0f); // Rotate up (around the x-axis)
+        }
+    }
+
+    public void RotateDown()
+    {
+        if (spawnedObject != null)
+        {
+            spawnedObject.transform.Rotate(15f, 0f, 0f); // Rotate down (around the x-axis)
+        }
+    }
+
+    private bool IsPointerOverUI()
+    {
+        return UnityEngine.EventSystems.EventSystem.current != null &&
+               UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+    }
+}
